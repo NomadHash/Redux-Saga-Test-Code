@@ -4,13 +4,10 @@ function PostList({ posts }) {
   console.log(posts);
   return (
     <ul>
-      {posts.map((post) => {
-        return (
-          <li key={post.id}>
-            {post.id} {post.body}
-          </li>
-        );
-      })}
+      <li key={posts.id}>
+        {posts.title}
+        {!posts.completed ? <span> 미완료</span> : <span>완료</span>}
+      </li>
     </ul>
   );
 }

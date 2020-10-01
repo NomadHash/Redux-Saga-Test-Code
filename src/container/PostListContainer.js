@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PostList from "../components/PostList";
-import { getPosts } from "../modules/posts";
+import { getTodos } from "../modules/posts";
+import * as postsAPI from "../api/posts";
 
 const PostListContainer = () => {
-  const { data, loading, error } = useSelector((state) => state.posts.posts);
   const dispatch = useDispatch();
+  const { data, loading } = useSelector((state) => state.todoReduce.todos);
+  console.log(data);
 
   // * 컴포넌트 마운트 후 포스트 목록 요청.
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getTodos());
   }, [dispatch]);
   if (loading) return <div>로딩중</div>;
   if (data) return <PostList posts={data} />;

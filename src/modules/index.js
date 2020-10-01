@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 import counter, { counterSaga } from "./couter";
-import posts, { postSaga } from "./posts";
+import todoReduce, { todoSaga } from "./posts";
 import { all } from "redux-saga/effects";
 
-const rootReducer = combineReducers({ counter, posts });
+const rootReducer = combineReducers({ counter, todoReduce });
 export function* rootSaga() {
-  yield all([counterSaga(), postSaga()]);
+  yield all([todoSaga()]);
 }
 
 export default rootReducer;
